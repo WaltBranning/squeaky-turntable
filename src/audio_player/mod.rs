@@ -1,5 +1,3 @@
-
-
 pub mod audio_player;
 pub mod controls;
 
@@ -24,8 +22,9 @@ pub enum PlayerButton {
 pub struct Track {
     index: Option<u8>,
     title: Option<String>,
+    album: Option<String>,
     src: Option<String>,
-    author: Option<String>,
+    artist: Option<String>,
     img: Option<String>,
 }
 
@@ -34,8 +33,9 @@ impl Track {
         Self {
             index: None,
             title: None,
+            album: None,
             src: None,
-            author: None,
+            artist: None,
             img: None,
         }
     }

@@ -1,17 +1,6 @@
 use leptos::*;
-use leptos_icons::*;
-use icondata::{
-    IoPlayBackSharp,
-    IoPlayForwardSharp,
-    IoPlaySkipBackSharp,
-    IoPlaySkipForwardSharp,
-    IoPlaySharp,
-    IoPauseSharp,
-};
-
 mod audio_player;
 use audio_player::audio_player::AudioPlayer;
-
 
 fn main() {
     console_error_panic_hook::set_once();

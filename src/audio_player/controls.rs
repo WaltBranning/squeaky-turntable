@@ -8,7 +8,7 @@ use icondata::{
 
 use logging::log;
 use wasm_bindgen_futures::{self, JsFuture};
-use crate::audio_player::{Track, PlayerState, PlayerButton};
+use crate::audio_player::{PlayerState, PlayerButton};
 
 #[component]
 pub fn Controls(audio_ref: NodeRef<Audio>) -> impl IntoView {
