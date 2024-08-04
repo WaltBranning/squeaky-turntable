@@ -1,0 +1,12 @@
+/home/walter/Projects/Rust/tutorials/leptos-tutorial/target/debug/deps/libhalf-ab8027f16763a0b8.rmeta: /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/lib.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/bfloat.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/bfloat/convert.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16/arch.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16/arch/x86.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/leading_zeros.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/slice.rs
+
+/home/walter/Projects/Rust/tutorials/leptos-tutorial/target/debug/deps/half-ab8027f16763a0b8.d: /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/lib.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/bfloat.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/bfloat/convert.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16/arch.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16/arch/x86.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/leading_zeros.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/slice.rs
+
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/lib.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/bfloat.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/bfloat/convert.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16/arch.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/binary16/arch/x86.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/leading_zeros.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/half-2.4.1/src/slice.rs:

@@ -1,0 +1,11 @@
+/media/walter/Projects/Rust/tutorials/leptos-tutorial/target/wasm32-unknown-unknown/debug/deps/libciborium_ll-1fe457b564ad5224.rmeta: /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/lib.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/dec.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/enc.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/hdr.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/seg.rs
+
+/media/walter/Projects/Rust/tutorials/leptos-tutorial/target/wasm32-unknown-unknown/debug/deps/libciborium_ll-1fe457b564ad5224.rlib: /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/lib.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/dec.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/enc.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/hdr.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/seg.rs
+
+/media/walter/Projects/Rust/tutorials/leptos-tutorial/target/wasm32-unknown-unknown/debug/deps/ciborium_ll-1fe457b564ad5224.d: /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/lib.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/dec.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/enc.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/hdr.rs /home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/seg.rs
+
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/lib.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/dec.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/enc.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/hdr.rs:
+/home/walter/.cargo/registry/src/index.crates.io-6f17d22bba15001f/ciborium-ll-0.2.2/src/seg.rs:
