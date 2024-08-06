@@ -1,3 +1,5 @@
+use leptos::{ReadSignal, WriteSignal};
+
 pub mod audio_player;
 pub mod controls;
 
@@ -6,6 +8,11 @@ pub mod controls;
 pub enum PlayerState {
     Playing,
     Paused,
+}
+
+pub struct PlayerStateSignal {
+    playing_state: ReadSignal<PlayerState>,
+    set_playing_state: WriteSignal<PlayerState>
 }
 
 #[derive(Clone, Copy, PartialEq)]

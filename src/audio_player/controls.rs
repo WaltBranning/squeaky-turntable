@@ -1,6 +1,5 @@
 use leptos::*;
-use leptos_use::{use_raf_fn_with_options, utils::Pausable, UseRafFnOptions};
-use html::Audio;
+use html::{Audio, Input};
 // use leptos_dom::helpers::AnimationFrameRequest;
 use leptos_icons::*;
 use icondata::{
@@ -9,23 +8,20 @@ use icondata::{
 };
 
 use logging::log;
-use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::{self, JsFuture};
-use crate::audio_player::{PlayerState, PlayerButton};
+use crate::audio_player::{PlayerState, PlayerButton, PlayerStateSignal};
 
 #[component]
-pub fn Controls(audio_ref: NodeRef<Audio>) -> impl IntoView {
-    let raf_option = UseRafFnOptions::default().immediate(false);
-
-    let (playState, setPlayState) = create_signal(PlayerState::Paused);
+pub fn Controls(
+    audio_ref: NodeRef<Audio>, 
+    play_state: PlayerStateSignal
+) -> impl IntoView {
+    
+    let playState = play_state.playing_state;
+    let setPlayState = play_state.set_playing_state;
+    // let (playState, setPlayState) = create_signal(PlayerState::Paused);
     let (ctrlBtnAction, setCtrlBtnAction) = create_signal(PlayerButton::Pause);
     
-    let (count, set_count) = create_signal(0);
-
-    let Pausable { pause, resume, is_active } = use_raf_fn_with_options(move |_| {
-        set_count.update(|count| *count += 1);
-    }, raf_option);
-
     create_effect(move |_| {
         let audio_ref_element = audio_ref.get().unwrap();
         let curr_time = audio_ref_element.current_time();
@@ -38,8 +34,6 @@ pub fn Controls(audio_ref: NodeRef<Audio>) -> impl IntoView {
                     let _ = play_promise.await;
                 });
                 setPlayState(PlayerState::Playing);
-                resume();
-
             }
             PlayerButton::FastForward => {
                 let curr_time = audio_ref_element.current_time();
@@ -61,13 +55,11 @@ pub fn Controls(audio_ref: NodeRef<Audio>) -> impl IntoView {
             PlayerButton::Pause => {
                 audio_ref_element.pause().unwrap();
                 setPlayState(PlayerState::Paused);
-                pause();
-            }
+                }
         }
     });
 
     view! {
-        <div>Count: {count}</div>
         <div class="controls-wrapper">
             <div class="controls">
                 <ControlButton control_type=move || PlayerButton::Previous 

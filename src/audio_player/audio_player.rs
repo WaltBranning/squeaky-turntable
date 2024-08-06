@@ -3,15 +3,17 @@
 use ev::Event;
 use html::{Audio, Input};
 use leptos::*;
+use leptos_use::{use_raf_fn_with_options, UseRafFnOptions};
+use leptos_use::utils::Pausable;
 use logging::log;
-use web_sys::js_sys::JSON::parse;
-
 
 use crate::audio_player::controls::Controls;
-use crate::audio_player::Track;
+use crate::audio_player::{Track, PlayerStateSignal, PlayerState};
+
 
 #[component]
 pub fn AudioPlayer() -> impl IntoView {
+    let (playState, setPlayState) = create_signal(PlayerState::Paused);
     let (current_track, set_current_track) = create_signal(Track::new());
     let audio_ref = create_node_ref::<Audio>();
     let progress_bar_ref = create_node_ref::<Input>();
@@ -30,15 +32,26 @@ pub fn AudioPlayer() -> impl IntoView {
     view! {
         <div class="audio-player">
             <div class="inner">
-                <DisplayTrack track=current_track audio_ref=audio_ref progress_bar_ref=progress_bar_ref/>
-                <Controls  audio_ref=audio_ref progress_bar_ref=progress_bar_ref />
+                <DisplayTrack 
+                    play_state=PlayerStateSignal{playing_state:playState, set_playing_state:setPlayState}
+                    track=current_track 
+                    audio_ref=audio_ref
+                />
+                <Controls  
+                    audio_ref=audio_ref 
+                    play_state=PlayerStateSignal{playing_state:playState, set_playing_state:setPlayState}
+                />
             </div>
         </div>
     }
 }
 
 #[component]
-fn DisplayTrack(track: ReadSignal<Track>, audio_ref: NodeRef<Audio>, progress_bar_ref: NodeRef<Input>) -> impl IntoView {
+fn DisplayTrack(
+    play_state: PlayerStateSignal,
+    track: ReadSignal<Track>, 
+    audio_ref: NodeRef<Audio>, 
+    ) -> impl IntoView {
     
     let (duration, setDuration) = create_signal(0.0);
     let (progress, setProgress) = create_signal(0.0);
@@ -63,10 +76,8 @@ fn DisplayTrack(track: ReadSignal<Track>, audio_ref: NodeRef<Audio>, progress_ba
                 </div>
                 <TrackProgress 
                     audio_ref=audio_ref 
-                    progress_ref=progress_bar_ref
+                    play_state=play_state
                     duration=duration
-                    set_progress=setProgress
-                    progress=progress
                 />
                 <div class="display-track-labels">
                     <span class="title">{move || track().title}</span> -
@@ -82,30 +93,44 @@ fn DisplayTrack(track: ReadSignal<Track>, audio_ref: NodeRef<Audio>, progress_ba
 #[component]
 fn TrackProgress(
     audio_ref: NodeRef<Audio>, 
-    progress_ref: NodeRef<Input>, 
-    duration: ReadSignal<f64>,
-    set_progress: WriteSignal<f64>,
-    progress: ReadSignal<f64>) -> impl IntoView {
+    play_state: PlayerStateSignal,
+    duration: ReadSignal<f64>
+    ) -> impl IntoView {
 
-    let audio_ref_element = audio_ref.get().unwrap();
-    let current_time = move || audio_ref.get().unwrap().current_time(); 
-    log!("{:?}",current_time());
+    let playState = play_state.playing_state;
+    let (currentTime, setCurrentTime) = create_signal(0.);
     let handle_progress_change = move |ev:Event| {    
-        audio_ref_element.set_current_time(event_target_value(&ev).parse::<f64>().unwrap_or_default());
-        set_progress(event_target_value(&ev).parse::<f64>().unwrap_or_default());
+        audio_ref.get().unwrap()
+            .set_current_time(event_target_value(&ev)
+            .parse::<f64>()
+            .unwrap_or_default());
     };
+
+    
+    let raf_option = UseRafFnOptions::default().immediate(false);
+    let Pausable { pause, resume, is_active } = use_raf_fn_with_options(move |_| {
+        let time = audio_ref.get().unwrap().current_time();
+        setCurrentTime(time);
+    }, raf_option);
+
+    create_effect(move |_| {
+        match playState.get() {
+            PlayerState::Playing => resume(),
+            PlayerState::Paused => pause()
+        }
+    });
 
     view! {
         <div class="progress-bar-component-wrapper">
-            <span class="pb-time_current">{current_time}</span>
+            <span class="pb-time_current">{move || float_to_seconds(currentTime())}</span>
             <input 
                 type="range" 
                 value="0"
                 prop:max=duration
-                node_ref=progress_ref
+                prop:value=currentTime
                 on:input=handle_progress_change
             />
-            <span class="pb-duration">{move || float_to_seconds(duration()-progress())}</span>
+            <span class="pb-duration">{move || float_to_seconds(duration()-currentTime())}</span>
         </div>
     }
 }
