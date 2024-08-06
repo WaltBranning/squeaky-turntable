@@ -1,3 +1,12 @@
 dist
-target/*
+target
 dist/*
+taget/*
+target/.rustc_info.json
+target/debug/.fingerprint/leptos-audio-d48adff6964fc9ac/output-bin-leptos-audio
+target/debug/.fingerprint/leptos-audio-dfabb6018e66c3e9/output-test-bin-leptos-audio
+target/wasm-bindgen/debug/leptos-audio_bg.wasm
+target/wasm-bindgen/debug/leptos-audio.js
+target/wasm32-unknown-unknown/debug/leptos-audio.wasm
+target/wasm32-unknown-unknown/debug/.fingerprint/leptos-audio-48ba53482cd87921/output-bin-leptos-audio
+target/wasm32-unknown-unknown/debug/deps/leptos_audio-48ba53482cd87921.wasm

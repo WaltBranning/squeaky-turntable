@@ -15,16 +15,6 @@ fn App() -> impl IntoView {
     }
 }
 
-#[component]
-fn ProgressBar(progress: impl Fn() -> i32 + 'static , #[prop(default = 100)] max:u16) -> impl IntoView {
-    view! {
-        <progress
-            max=max
-            value=progress
-        />
-    }
-}
-
 
 
 
