@@ -22,9 +22,9 @@ pub fn AudioPlayer(track_list: AudioList) -> impl IntoView {
     let audio_ref = create_node_ref::<Audio>();
     let progress_bar_ref = create_node_ref::<Input>();
 
-    let track = track_list[0].clone();
+    // let track = track_list[0].clone();
 
-    setCurrentTrack.set(track);
+    // setCurrentTrack.set(track);
     view! {
         <div class="audio-player">
             <div class="inner">

@@ -26,9 +26,9 @@ pub fn Controls(
 
     create_effect(move |_| {
         let audio_ref_element = audio_ref.get().unwrap();
-        let curr_time = audio_ref_element.current_time();
-        log!("The time is {}",curr_time);
-        log!("The PlayState is {:?}",playState());
+        // let curr_time = audio_ref_element.current_time();
+        
+        // log!("The PlayState is {:?}",playState());
         match ctrlBtnAction() {
             PlayerButton::Play => {
                 let play_promise = JsFuture::from(audio_ref_element.play().unwrap());

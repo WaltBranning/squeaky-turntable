@@ -18,7 +18,7 @@ pub fn get_files() -> AudioList {
            album: Some("Cosmic Buccaneers".to_string()),
            src: Some("./audio/Cosmic_Buccaneers_Epic.mp3".to_string()),
            artist: Some("Cosmic Buccaneers".to_string()),
-           img: Some("./imgs/Cosmic_Buccaneers_Epic.jpeg".to_string())
+           img: Some("./imgs/CosmicBucaneers.jpeg".to_string())
         },
         
         Track {
@@ -27,7 +27,7 @@ pub fn get_files() -> AudioList {
            album: Some("Cosmic Buccaneers".to_string()),
            src: Some("./audio/Cosmic_Buccaneers_Opening.mp3".to_string()),
            artist: Some("Cosmic Buccaneers".to_string()),
-           img: Some("./imgs/Cosmic_Buccaneers_Opening.jpeg".to_string())
+           img: Some("./imgs/CosmicBucaneers.jpeg".to_string())
         },
         
         Track {
@@ -45,7 +45,7 @@ pub fn get_files() -> AudioList {
            album: Some("Cosmic Buccaneers".to_string()),
            src: Some("./audio/Galactic_Piracy.mp3".to_string()),
            artist: Some("Cosmic Buccaneers".to_string()),
-           img: Some("./imgs/Galactic_Piracy.jpeg".to_string())
+           img: Some("./imgs/CosmicBucaneers.jpeg".to_string())
         },
         
         Track {
@@ -57,7 +57,7 @@ pub fn get_files() -> AudioList {
            img: Some("./imgs/Extension.jpeg".to_string())
         },
     ];
-    
+
     file_list
 }
 
