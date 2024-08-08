@@ -2,7 +2,8 @@ use leptos::{ReadSignal, WriteSignal};
 
 pub mod audio_player;
 pub mod controls;
-
+pub mod display_track;
+pub mod playlist;
 
 #[derive(Clone, Copy, PartialEq, Debug)]
 pub enum PlayerState {
@@ -15,7 +16,7 @@ pub struct PlayerStateSignal {
     set_playing_state: WriteSignal<PlayerState>
 }
 
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, PartialEq, Debug)]
 pub enum PlayerButton {
     Play,
     Pause,
@@ -25,14 +26,26 @@ pub enum PlayerButton {
     Previous,
 }
 
-#[derive(Clone)]
+pub type AudioList = Vec<Track>;
+
+pub struct TrackSetter {
+    read: ReadSignal<Track>,
+    set: WriteSignal<Track>
+}
+
+pub struct  TrackChangeSignals {
+    read: ReadSignal<Option<PlayerButton>>,
+    set: WriteSignal<Option<PlayerButton>>
+}
+
+#[derive(Clone, Debug)]
 pub struct Track {
-    index: Option<u8>,
-    title: Option<String>,
-    album: Option<String>,
-    src: Option<String>,
-    artist: Option<String>,
-    img: Option<String>,
+    pub index: Option<u8>,
+    pub title: Option<String>,
+    pub album: Option<String>,
+    pub src: Option<String>,
+    pub artist: Option<String>,
+    pub img: Option<String>,
 }
 
 impl Track {

@@ -9,19 +9,21 @@ use icondata::{
 
 use logging::log;
 use wasm_bindgen_futures::{self, JsFuture};
-use crate::audio_player::{PlayerState, PlayerButton, PlayerStateSignal};
+use crate::audio_player::{PlayerState, PlayerButton, PlayerStateSignal, TrackChangeSignals};
 
 #[component]
 pub fn Controls(
     audio_ref: NodeRef<Audio>, 
-    play_state: PlayerStateSignal
+    play_state: PlayerStateSignal,
+    track_change_signals: TrackChangeSignals
 ) -> impl IntoView {
     
     let playState = play_state.playing_state;
     let setPlayState = play_state.set_playing_state;
     // let (playState, setPlayState) = create_signal(PlayerState::Paused);
     let (ctrlBtnAction, setCtrlBtnAction) = create_signal(PlayerButton::Pause);
-    
+    let set_track = track_change_signals.set;
+
     create_effect(move |_| {
         let audio_ref_element = audio_ref.get().unwrap();
         let curr_time = audio_ref_element.current_time();
@@ -44,12 +46,14 @@ pub fn Controls(
                 audio_ref_element.set_current_time(curr_time - 10.);
             },
             PlayerButton::Next => {
-                
+                set_track(Some(PlayerButton::Next));
             },
             PlayerButton::Previous => {
                 let curr_time = audio_ref_element.current_time();
                 if  curr_time > 5. {
                     audio_ref_element.set_current_time(0.);
+                } else {
+                    set_track(Some(PlayerButton::Previous));
                 }
             },
             PlayerButton::Pause => {
