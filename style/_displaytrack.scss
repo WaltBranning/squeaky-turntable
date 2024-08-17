@@ -1,0 +1,139 @@
+@import 'variables';
+
+
+.audio-info {
+    width: 100%;
+}
+
+.display-track-image {
+    box-shadow: 0px 0px 27px 10px rgba(0, 0, 0, 0.193);
+}
+
+.display-track-labels {
+    text-shadow: 0 1px 4px var(--light-shadow);
+    height: 2rem;
+    display: block;
+    text-align: center;
+    padding: 1.5% 0;
+    font-weight: 900;
+    font-size: 1.25vi;
+    overflow: hidden;
+    text-wrap: nowrap;
+    
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 5vi;
+        font-weight: 500;
+    }
+}
+
+.time-display {
+    // font-weight: bold;
+    font-size: 1vi;
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 5vi;
+    }
+}
+
+.pb-time-current {
+    margin-right: 5px;
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 5vi;
+    }
+}
+
+.pb-duration {
+    margin-left: 5px;
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 5vi;
+    }
+}
+
+.album-cover {
+    position: relative;
+    object-fit: contain;
+    width: 100%;
+}
+
+@mixin thumb {
+    appearance: none;
+    transform: var(--thumb-transform);
+    border-radius: var(--thumb-radius, 50%);
+    background: var(--thumb-color);
+    box-shadow: var(--thumb-shadow);
+    border: none;
+    pointer-events: auto;
+    transition: 0.1s;
+}
+
+// input[type="range"] {
+//     -webkit-appearance: none;
+//     background: transparent;
+//     appearance: none
+// }
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--shadow-color);
+    border-radius: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    @include thumb;
+}
+
+.progress-bar-component-wrapper {
+    --progress-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) inset;
+    --progress-flll-shadow: var(--progress-shadow);
+    --fill-color: linear-gradient(to right, LightCyan, var(--primary-color-one));
+    --thumb-shadow: 0 0 4px rgba(0, 0, 0, 0.3),
+        -3px 9px 9px rgba(255, 255, 255, 0.25) inset,
+        -1px 3px 2px rgba(255, 255, 255, 0.33) inset,
+        0 0 0 99px var(--primary-color-one) inset;
+}
+
+.weak-text {
+    font-size: .75vi;
+    font-weight: lighter;
+
+    &::after {
+        content: " "
+    }
+
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 5vi;
+    }
+}
+
+.control-button {
+    cursor: pointer;
+    text-align: center;
+    font-size: 2.5vi;
+    color: var(--primary-darkest);
+    padding: 0 2px;
+    transition: color 0.5s ease;
+
+    &:hover {
+        color: var(--primary-dark)
+    }
+    
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 8vi;
+        color: var(--main-lightshade-dark-theme);
+        &:hover {
+            color: var(--main-lightshade-dark-theme)
+        }
+    }
+
+
+    // &:nth-child(3) {
+    //     font-size: 3vi;
+    // }
+
+    // &:nth-child(1) {
+    //     font-size: 2vi;
+    // }
+    // &:nth-child(5) {
+    //     font-size: 2vi;
+    // }
+
+
+}

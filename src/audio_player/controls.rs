@@ -1,5 +1,5 @@
 use leptos::*;
-use html::{Audio, Input};
+use html::Audio;
 // use leptos_dom::helpers::AnimationFrameRequest;
 use leptos_icons::*;
 use icondata::{
@@ -36,6 +36,7 @@ pub fn Controls(
                     let _ = play_promise.await;
                 });
                 setPlayState(PlayerState::Playing);
+                audio_ref().unwrap().set_autoplay(true);
             }
             PlayerButton::FastForward => {
                 let curr_time = audio_ref_element.current_time();
@@ -59,13 +60,13 @@ pub fn Controls(
             PlayerButton::Pause => {
                 audio_ref_element.pause().unwrap();
                 setPlayState(PlayerState::Paused);
+                audio_ref().unwrap().set_autoplay(false);
                 }
         }
     });
 
     view! {
-        <div class="controls-wrapper">
-            <div class="controls">
+        <div class="controls-wrapper flex flex-row align-content-center justify-content-center">
                 <ControlButton control_type=move || PlayerButton::Previous 
                     on:click=move |_| {
                         setCtrlBtnAction(PlayerButton::Previous)
@@ -103,7 +104,6 @@ pub fn Controls(
                         setCtrlBtnAction(PlayerButton::Next)
                     }            
                 />
-            </div>
         </div>
     }
 }
@@ -119,8 +119,8 @@ pub fn ControlButton(control_type: impl Fn() -> PlayerButton + 'static) -> impl 
         PlayerButton::Pause => IoPlaySharp,
     });
     view! {
-        <button>
-            <Icon icon=player_state style="width: 1.75em; height: 1.75em" />
-        </button>
+        <div class="control-button inline-block">
+            <Icon icon=player_state class="control-button-icon"/>
+        </div>
     }
 }

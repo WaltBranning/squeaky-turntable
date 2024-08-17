@@ -1,12 +1,5 @@
-
-
-use ev::Event;
-use html::{Audio, Input};
 use leptos::*;
-use leptos_use::{use_raf_fn_with_options, UseRafFnOptions};
-use leptos_use::utils::Pausable;
-use logging::log;
-
+use html::Audio;
 
 use crate::audio_player::controls::Controls;
 use crate::audio_player::display_track::DisplayTrack;
@@ -20,14 +13,14 @@ pub fn AudioPlayer(track_list: AudioList) -> impl IntoView {
     let (current_track, setCurrentTrack) = create_signal(Track::new());
     let (changeTrackSignal, setChangeTrackSignal) = create_signal(None);
     let audio_ref = create_node_ref::<Audio>();
-    let progress_bar_ref = create_node_ref::<Input>();
+    // let progress_bar_ref = create_node_ref::<Input>();
 
     // let track = track_list[0].clone();
 
     // setCurrentTrack.set(track);
     view! {
-        <div class="audio-player">
-            <div class="inner">
+        <div class="player-container audio-player border-round align-items-center">
+            <div class="player-interface">
                 <DisplayTrack 
                     play_state=PlayerStateSignal{playing_state:playState, set_playing_state:setPlayState}
                     track=current_track 
@@ -45,7 +38,7 @@ pub fn AudioPlayer(track_list: AudioList) -> impl IntoView {
                     }
                 />
             </div>
-            <div class="playlist-wrapper">
+            <div class="playlist-wrapper ">
                 <PlayList 
                 playlist_input=track_list 
                 track_change_signals=TrackChangeSignals{

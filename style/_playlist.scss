@@ -1,0 +1,92 @@
+@import '_variables.scss';
+
+.playlist-header {
+    text-shadow: 0 2px 4px var(--light-shadow);
+    padding: 2.5% 0;
+    font-size: 2vi;
+    font-weight: bold;
+    border-bottom: 2px solid var(--main-container-dark-theme-borders);
+
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 6vi;
+    }
+
+    // height;
+}
+
+.playlist-wrapper {
+    // margin-left: 10px;
+    width: 40%;
+    height: 85%;
+
+    @media only screen and (max-width: $sm-breakpoint) {
+        width: 100%;
+        height: 45%;
+    }
+
+    @media only screen and (max-height: 940px) {
+        height: 48vh;
+    }
+
+    @media only screen and (max-height: 670px) {
+        height: 40vh;
+    }
+
+}
+
+.playlist-item-wrapper {
+
+    height: 90%;
+    overflow-y: scroll;
+
+    @media only screen and (min-width: 1025px) {
+        border: 1px solid var(--main-container-dark-theme-borders);
+    }
+
+    @media only screen and (max-width: $sm-breakpoint) {
+        box-shadow: inset 0 0 15px var(--light-shadow);
+        border-top: 1px solid var(--primary-darkest);
+        height: 90%;
+    }
+
+    @media only screen and (max-height: 670px) {
+        height: 67%;
+    }
+
+}
+
+.playlist-item-item {
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    padding: 2% 0;
+    font-size: 1.25vi;
+    // border-bottom: 2px solid var(--main-container-dark-theme-borders);
+
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(to left, #b2ff5900, var(--main-container-dark-theme-borders), #b2ff5900);
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    transition: box-shadow 0.25s ease;
+
+    &:hover {
+        box-shadow: inset 0 0 15px var(--light-shadow);
+    }
+
+    &#selected {
+        box-shadow: inset 0 0 15px var(--light-shadow);
+    }
+
+    @media only screen and (max-width: $sm-breakpoint) {
+        font-size: 6vi;
+
+        &#selected {
+            box-shadow: inset 0 0 15px var(--main-container-dark-theme-borders);
+        }
+
+    }
+}

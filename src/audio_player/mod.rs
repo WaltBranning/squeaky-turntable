@@ -38,9 +38,9 @@ pub struct  TrackChangeSignals {
     set: WriteSignal<Option<PlayerButton>>
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Track {
-    pub index: Option<u8>,
+    pub index: Option<usize>,
     pub title: Option<String>,
     pub album: Option<String>,
     pub src: Option<String>,

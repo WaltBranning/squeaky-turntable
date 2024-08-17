@@ -1,10 +1,9 @@
 use leptos::*;
 use ev::Event;
-use html::{Audio, Input};
+use html::Audio;
 use leptos_use::{use_raf_fn_with_options, UseRafFnOptions};
 use leptos_use::utils::Pausable;
-use logging::log;
-use crate::audio_player::{Track, PlayerStateSignal, PlayerState, AudioList};
+use crate::audio_player::{Track, PlayerStateSignal, PlayerState};
 
 #[component]
 pub fn DisplayTrack(
@@ -14,19 +13,18 @@ pub fn DisplayTrack(
     ) -> impl IntoView {
     
     let (duration, setDuration) = create_signal(0.0);
-    let (progress, setProgress) = create_signal(0.0);
     
-    view! {
-        <div class="display-track-wrapper">
+    view!{
+        <div class="display-track-wrapper m-auto w-10">
             <audio 
                 src=move ||{track().src} 
                 _ref=audio_ref 
                 on:loadedmetadata=move |_: Event| {setDuration(audio_ref.get().unwrap().duration())}
-                set_current_time=progress
             />
             <div class="audio-info" >
-                <div class="display-track-image" >
-                    <img src=move || {
+                <div class="display-track-image inline-block " >
+                    <img class="album-cover"
+                        src=move || {
                         if track().img != None {
                             track().img
                         } else {
@@ -47,8 +45,6 @@ pub fn DisplayTrack(
         </div>
     }
 }
-
-
 
 #[component]
 pub fn TrackProgress(
@@ -74,6 +70,7 @@ pub fn TrackProgress(
     }, raf_option);
 
     create_effect(move |_| {
+        let _active = is_active();
         match playState.get() {
             PlayerState::Playing => resume(),
             PlayerState::Paused => pause()
@@ -81,16 +78,16 @@ pub fn TrackProgress(
     });
 
     view! {
-        <div class="progress-bar-component-wrapper">
-            <span class="pb-time_current">{move || float_to_seconds(currentTime())}</span>
-            <input 
+        <div class="progress-bar-component-wrapper flex justify-content-between align-content-center">
+            <span class="time-display pb-time-current">{move || float_to_seconds(currentTime())}</span>
+            <input class="w-11"
                 type="range" 
                 value="0"
                 prop:max=duration
                 prop:value=currentTime
                 on:input=handle_progress_change
             />
-            <span class="pb-duration">{move || float_to_seconds(duration()-currentTime())}</span>
+            <span class="time-display pb-duration">{move || float_to_seconds(duration()-currentTime())}</span>
         </div>
     }
 }
@@ -99,4 +96,4 @@ fn float_to_seconds(seconds_float: f64) -> String {
     let minutes = seconds_float / 60.;
     let seconds = seconds_float % 60.;
     format!("{:0>2.0}:{:0>2.0}", minutes, seconds)
-}
+} 
