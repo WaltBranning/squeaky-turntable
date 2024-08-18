@@ -1,7 +1,7 @@
-use html::div;
+// use html::div;
 use leptos::*;
 use logging::log;
-use crate::audio_player::{AudioList, PlayerButton, Track, TrackChangeSignals, TrackSetter};
+use crate::audio_player::{AudioList, PlayerButton, TrackChangeSignals, TrackSetter};
 
 
 #[component]
@@ -35,7 +35,7 @@ pub fn PlayList(
                     set_current_track(new_track.clone());
                     log!("New {:?} \n Current {:?}", new_track, current_track.get());
                 }
-                
+                role="button"
                 >{title}<br/><span class="weak-text">By:</span>  {artist}
                 
                 <span></span>

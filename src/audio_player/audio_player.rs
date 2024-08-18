@@ -25,6 +25,10 @@ pub fn AudioPlayer(track_list: AudioList) -> impl IntoView {
                     play_state=PlayerStateSignal{playing_state:playState, set_playing_state:setPlayState}
                     track=current_track 
                     audio_ref=audio_ref
+                    track_change_signals=TrackChangeSignals{
+                        read: changeTrackSignal,
+                        set: setChangeTrackSignal
+                    }
                 />
                 <Controls  
                     audio_ref=audio_ref 

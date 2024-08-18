@@ -17,7 +17,7 @@ fn main() {
 fn App() -> impl IntoView {
     let mp3s = get_files();
     view! {
-        <div class="main-container">
+        // <div class="main-container">
             <div class="top-bar flex justify-content-between align-items-center">
                 <span>
                     <span class="cinzel-400 top-bar-title">The</span>
@@ -32,7 +32,7 @@ fn App() -> impl IntoView {
                 <a class="mr-2" href="https://www.rust-lang.org/"><Icon icon=SiRust /></a>
                 <a href="https://leptos.dev/"><Icon icon=SiLeptos /></a>
                 </div>
-        </div>
+        // </div>
     }
 }
 

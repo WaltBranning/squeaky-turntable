@@ -3,13 +3,14 @@ use ev::Event;
 use html::Audio;
 use leptos_use::{use_raf_fn_with_options, UseRafFnOptions};
 use leptos_use::utils::Pausable;
-use crate::audio_player::{Track, PlayerStateSignal, PlayerState};
+use crate::audio_player::{PlayerButton, PlayerState, PlayerStateSignal, Track, TrackChangeSignals};
 
 #[component]
 pub fn DisplayTrack(
     play_state: PlayerStateSignal,
     track: ReadSignal<Track>, 
-    audio_ref: NodeRef<Audio>, 
+    audio_ref: NodeRef<Audio>,
+    track_change_signals: TrackChangeSignals
     ) -> impl IntoView {
     
     let (duration, setDuration) = create_signal(0.0);
@@ -36,6 +37,7 @@ pub fn DisplayTrack(
                     audio_ref=audio_ref 
                     play_state=play_state
                     duration=duration
+                    track_change_signals=track_change_signals
                 />
                 <div class="display-track-labels">
                     <span class="title">{move || track().title}</span> -
@@ -50,10 +52,12 @@ pub fn DisplayTrack(
 pub fn TrackProgress(
     audio_ref: NodeRef<Audio>, 
     play_state: PlayerStateSignal,
-    duration: ReadSignal<f64>
+    duration: ReadSignal<f64>,
+    track_change_signals: TrackChangeSignals
     ) -> impl IntoView {
 
     let playState = play_state.playing_state;
+    let set_track = track_change_signals.set;
     let (currentTime, setCurrentTime) = create_signal(0.);
     let handle_progress_change = move |ev:Event| {    
         audio_ref.get().unwrap()
@@ -66,7 +70,12 @@ pub fn TrackProgress(
     let raf_option = UseRafFnOptions::default().immediate(false);
     let Pausable { pause, resume, is_active } = use_raf_fn_with_options(move |_| {
         let time = audio_ref.get().unwrap().current_time();
-        setCurrentTime(time);
+        if time - duration() == 0. {
+            set_track(Some(PlayerButton::Next));
+        } else {
+            setCurrentTime(time);
+        }
+        
     }, raf_option);
 
     create_effect(move |_| {
