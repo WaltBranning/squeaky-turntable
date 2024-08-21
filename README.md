@@ -1,0 +1,3 @@
+# Sqeaky Turntable
+
+This audio player project stems out of my journey to learn Rust. When I read about Leptos I knew I had to try it out, and since I have some experience with React. Having a common frame of reference for much of the structure of the app but still leaving room for how Rust itself works, seemed a perfect combination.  I wasn't disappointed, I really enjoyed working with Leptos and intend to use it more as I rewrite some of my personal legacy project for redeployment.  On that note, after working on this little audio player project, I am happy with the direction it is going and plan on refining it more and incorporating the player into TheReformedCodex as TheReformedCodex-Radio as I rebuild and relaunch that site.
