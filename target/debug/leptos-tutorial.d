@@ -1,1 +1,0 @@
-/home/walter/RustProjects/squeaky-turntable/target/debug/leptos-tutorial: /home/walter/RustProjects/squeaky-turntable/src/audio_player/audio_player.rs /home/walter/RustProjects/squeaky-turntable/src/audio_player/controls.rs /home/walter/RustProjects/squeaky-turntable/src/audio_player/mod.rs /home/walter/RustProjects/squeaky-turntable/src/main.rs
