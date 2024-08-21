@@ -24,22 +24,25 @@ pub fn PlayList(
         let comp_track = track.clone();
         let title = track.title;
         let artist = track.artist;
-        let _album = track.album;
+        let album = track.album;
 
         create_effect(move |_| {trackIndex();});
 
         view!{
-            <div class="playlist-item-item" id=move|| {if comp_track == current_track.get(){"selected"} else {"not-selected"}}
+            <button class="playlist-item" id=move|| {if comp_track == current_track.get(){"selected"} else {"not-selected"}}
                  on:click=move |_| {
                     setTrackIndex(idx);
                     set_current_track(new_track.clone());
                     log!("New {:?} \n Current {:?}", new_track, current_track.get());
                 }
                 role="button"
-                >{title}<br/><span class="weak-text">By:</span>  {artist}
-                
-                <span></span>
-            </div>
+                >{title}<br/>
+                <span class="weak-text">Album:</span> 
+                <span class="playlist-item-album playlist-item-info-text">{album}</span>
+                <br />
+                <span class="weak-text">By:</span> 
+                <span class="playlist-item-artist playlist-item-info-text">{artist}</span>
+            </button>
             
         }
     }).collect_view();

@@ -53,16 +53,17 @@
     @media only screen and (max-height: 670px) {
         height: 67%;
     }
-
 }
 
-.playlist-item-item {
+.playlist-item {
     display: block;
+    color: var(--primary-darkest);
     cursor: pointer;
     user-select: none;
     text-align: center;
     padding: 2% 0;
     font-size: 1.25vi;
+    background: transparent;
     // border-bottom: 2px solid var(--main-container-dark-theme-borders);
 
     border: 10px solid;
@@ -84,7 +85,7 @@
 
     @media only screen and (max-width: $sm-breakpoint) {
         font-size: 5vi;
-
+        color: var(--main-lightshade-dark-theme);
         &#selected {
             box-shadow: inset 0 0 15px var(--main-container-dark-theme-borders);
         }

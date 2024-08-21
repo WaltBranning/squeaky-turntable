@@ -10,3 +10,4 @@ target/wasm-bindgen/debug/leptos-audio.js
 target/wasm32-unknown-unknown/debug/leptos-audio.wasm
 target/wasm32-unknown-unknown/debug/.fingerprint/leptos-audio-48ba53482cd87921/output-bin-leptos-audio
 target/wasm32-unknown-unknown/debug/deps/leptos_audio-48ba53482cd87921.wasm
+dist/index.html
