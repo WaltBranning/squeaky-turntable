@@ -2,7 +2,7 @@
 <sub>*This README was generated with the assistance of ChatGPT.*</sub>
 
 
-This project marks my exploration into the world of Rust, specifically through the lens of building a web application with Leptos. Having come from a background in React, I was intrigued by Leptos and its potential to blend the familiar structure of React with the unique features of Rust. This seemed like the perfect way to deepen my understanding of Rust while leveraging my existing knowledge.
+This project marks my exploration into the world of Rust, specifically through the lens of building a web application with [Leptos](https://github.com/leptos-rs/leptos). Having some experience in React, I was intrigued by Leptos and its potential to blend the familiar structure of React with the unique features of Rust. This seemed like the perfect way to deepen my understanding of Rust while leveraging my existing knowledge.
 
 ## Project Overview
 
